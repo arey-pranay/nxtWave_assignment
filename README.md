@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# **NxtWave Technical Content Developer - Assignment Submission**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## By **Pranay Parikh**
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### **Overview of the Project**
 
-### `npm start`
+Hey,
+I'm making this file to tell my approach for the **NxtWave Technical Content Developer Assignment**. The goal of the project is to build a responsive React-based application that interacts with an API to manage lists. In this submission, I’ll describe the steps I intend to follow, the technologies I plan to use, and the structure I’ll adhere to in order to meet the assignment’s requirements.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### **Tech Stack**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **create-react-app**: I intend to use **create-react-app** to set up the project as required by the assignment guidelines. It provides an easy and reliable foundation for React applications.
+- **TailwindCSS**: I plan to use **TailwindCSS** for styling. Its utility-first approach allows for quick and flexible styling, ensuring that the app is both responsive and modern-looking.
 
-### `npm test`
+> **Note**: Although tools like **Next.js** or **Vite** were considered for a more modern approach, I will be using **create-react-app** as it is explicitly mentioned in the assignment requirements.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+### **Project Plan**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The project will involve creating an interactive, responsive application that allows users to interact with an external API for list creation. Below are the key aspects I plan to implement:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Responsive Design**: I intend to ensure that the app is fully responsive and looks great on screens of different sizes, specifically targeting **Medium (>=768px)**, **Large (>=992px)**, and **Extra Large (>=1200px)** screens.
+- **API Integration**: I will integrate the **List Creation API** (`https://apis.ccbp.in/list-creation/lists`) to dynamically fetch and display lists.
+- **List Management**: Users will be able to create and manage lists.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+### **Features to be Implemented**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Here are the features I plan to implement:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **List Creation**: A feature to create new lists, interact with the API, and display the lists in a user-friendly manner.
+- **Responsive UI**: The app will be designed to look and function well on various screen sizes (Medium, Large, and Extra Large).
+- **Loading & Error Handling**: I will implement proper handling for API loading and error states to ensure a smooth user experience.
+- **State Management**: I intend to use **React Hooks** (`useState`, `useEffect`) to manage the state of the app. This approach is suitable due to the simplicity of the project and the limited timeline, eliminating the need for external state management libraries (e.g., Redux).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### **API to be Used**
 
-## Learn More
+The application will fetch data from the only 1 API:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **List Creation API**:
+  - **Endpoint**: `https://apis.ccbp.in/list-creation/lists`
+  - This API will be used to fetch list data and manage the list items in the app.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+### **Development Approach**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Analyzing Screens**:
+   - I’ll start by reviewing the provided screen designs and analyzing the components required. I will also consider how the app should behave in different screen sizes.
+2. **Execution Level Plan (ELP)**:
+   - I will break the UI into reusable components, focusing on modularity and clarity.
+   - I’ll identify where to maintain the state (within components, using React Hooks) and list down the possible states for each component (loading, success, error, etc.).
+3. **Building the App**:
+   - I will start by building the common components such as buttons, input fields, and list items.
+   - Next, I will compose these components to form the overall layout.
+   - **TailwindCSS** will be used to style the components, ensuring responsiveness and a modern design.
+4. **Handling API Requests**:
+   - I will integrate the API using **React’s `useEffect`** and **`useState`** hooks to fetch and display list data.
+   - I will handle the API status (loading, success, failure) gracefully to ensure a smooth user experience.
+5. **Testing & Refining**:
+   - I’ll test the app on various screen sizes to verify that the responsiveness is functioning as expected.
+   - I will also test error handling and the general flow of the app to ensure everything works smoothly.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
