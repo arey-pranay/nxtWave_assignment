@@ -1,9 +1,15 @@
-export default function ListContainer({ list }) {
+export default function ListContainer({ list, isChecked, onCheckChange }) {
   return (
-    <div className="bg-blue-50 rounded-lg shadow-sm overflow-hidden">
-      <div className="p-4 border-b border-blue-100 flex justify-between items-center">
+    <div className="bg-[#EDF6FB] rounded-lg shadow-sm overflow-hidden">
+      <div className="p-4 border-b border-blue-100 flex justify-start gap-4 items-center">
+        <input
+          type="checkbox"
+          checked={isChecked}
+          onChange={onCheckChange}
+          className="h-4 w-4 text-blue-600"
+        />
         <h2 className="text-lg font-medium text-gray-700">
-          List {list.list_number} ({list.count})
+          List {list.list_number}
         </h2>
       </div>
 
