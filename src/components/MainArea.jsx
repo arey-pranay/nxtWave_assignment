@@ -1,19 +1,41 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import FailureView from "./FailureView";
+import ListContainer from "./ListContainer";
 
 const MainArea = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [lists, setLists] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
+  function organizeItems(data) {
+    const result = [
+      { id: "list1", list_number: 1, count: 0, items: [] },
+      { id: "list2", list_number: 2, count: 0, items: [] },
+    ];
+
+    data.lists.forEach((item) => {
+      const listIndex = item.list_number - 1;
+      const itemObj = {
+        id: item.id,
+        name: item.name,
+        description: item.description,
+      };
+
+      result[listIndex].items.push(itemObj);
+      result[listIndex].count += 1;
+    });
+
+    return result;
+  }
   const fetchLists = async () => {
     setIsLoading(true);
     setHasError(false);
     try {
       const res = (await axios.get("https://apis.ccbp.in/list-creation/lists"))
-        .data.lists;
+        .data;
       console.log(res);
-      setLists(res);
+      setLists(organizeItems(res));
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching lists:", error);
@@ -35,16 +57,24 @@ const MainArea = () => {
   }
 
   return (
-    <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 ">
-      {lists.map((item) => (
-        <div
-          key={item.id}
-          className="bg-gray-200  p-4 m-2 rounded-lg shadow-md"
-        >
-          <h2 className="text-xl font-bold">{item.name}</h2>
-          <p>{item.description}</p>
+    <div className="max-w-6xl mx-auto p-6">
+      {errorMessage && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-center">
+          {errorMessage}
         </div>
-      ))}
+      )}
+
+      <div className="flex justify-center mb-12">
+        <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-md transition-colors">
+          Create a new list
+        </button>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {lists.map((list) => (
+          <ListContainer key={list.id} list={list} />
+        ))}
+      </div>
     </div>
   );
 };
