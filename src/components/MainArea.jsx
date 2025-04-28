@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import FailureView from "./FailureView";
 
 const MainArea = () => {
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [hasError, setHasError] = React.useState(false);
-  const [lists, setLists] = React.useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [lists, setLists] = useState([]);
   const fetchLists = async () => {
     setIsLoading(true);
     setHasError(false);
@@ -21,16 +22,26 @@ const MainArea = () => {
     }
   };
 
-  useEffect(() => fetchLists(), []);
+  useEffect(() => {
+    fetchLists();
+  }, []);
+
+  if (isLoading) {
+    return <div className="text-center">Loading...</div>;
+  }
+
+  if (hasError) {
+    return <FailureView onRetry={fetchLists} />;
+  }
 
   return (
-    <div className="grid grid-cols-5">
+    <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 ">
       {lists.map((item) => (
         <div
           key={item.id}
           className="bg-gray-200  p-4 m-2 rounded-lg shadow-md"
         >
-          <h2 className="text-xl font-bold">{item.title}</h2>
+          <h2 className="text-xl font-bold">{item.name}</h2>
           <p>{item.description}</p>
         </div>
       ))}
