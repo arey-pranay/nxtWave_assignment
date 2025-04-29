@@ -42,10 +42,10 @@ const MainArea = () => {
       setLists(localLists);
       setNextListNumber(localLists.length + 1);
       setIsLoading(false);
-      alert("list exists in local storage");
+      alert("Restoring your last progress");
     } else {
       try {
-        alert("Fetching lists from API...");
+        alert("Fetching fresh lists from the API");
         const res = (
           await axios.get("https://apis.ccbp.in/list-creation/lists")
         ).data;
@@ -172,12 +172,22 @@ const MainArea = () => {
       <h1 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
         List Creation
       </h1>
-      <div className="flex justify-center">
+      <div className="flex gap-5 justify-center">
         <button
           className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-md transition-colors"
           onClick={handleCreateNewList}
         >
           Create a new list
+        </button>
+        <button
+          className="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded-md transition-colors"
+          onClick={() => {
+            localStorage.removeItem("lists");
+            setNextListNumber(3);
+            fetchLists();
+          }}
+        >
+          Reset Lists <span className="text-xs">(extra feat)</span>
         </button>
       </div>
       {errorMessage && (
