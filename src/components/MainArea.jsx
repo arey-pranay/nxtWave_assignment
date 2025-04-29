@@ -37,17 +37,28 @@ const MainArea = () => {
   const fetchLists = async () => {
     setIsLoading(true);
     setHasError(false);
-    try {
-      const res = (await axios.get("https://apis.ccbp.in/list-creation/lists"))
-        .data;
-      console.log(res);
-      setLists(organizeItems(res));
+    if (JSON.parse(localStorage.getItem("lists")) !== null) {
+      const localLists = JSON.parse(localStorage.getItem("lists"));
+      setLists(localLists);
+      setNextListNumber(localLists.length + 1);
       setIsLoading(false);
-    } catch (error) {
-      console.error("Error fetching lists:", error);
-      setIsLoading(false);
-      setHasError(true);
+      alert("list exists in local storage");
+    } else {
+      try {
+        alert("Fetching lists from API...");
+        const res = (
+          await axios.get("https://apis.ccbp.in/list-creation/lists")
+        ).data;
+        console.log(res);
+        setLists(organizeItems(res));
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching lists:", error);
+        setIsLoading(false);
+        setHasError(true);
+      }
     }
+    return;
   };
 
   useEffect(() => {
@@ -112,6 +123,7 @@ const MainArea = () => {
 
     const handleUpdateLists = () => {
       setIsListCreationView(false);
+      localStorage.setItem("lists", JSON.stringify(lists));
       setCheckedLists([]);
       setInitialLists([]);
     };
@@ -160,7 +172,7 @@ const MainArea = () => {
       <h1 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
         List Creation
       </h1>
-      <div className="flex justify-center mb-20">
+      <div className="flex justify-center">
         <button
           className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-md transition-colors"
           onClick={handleCreateNewList}
@@ -169,12 +181,12 @@ const MainArea = () => {
         </button>
       </div>
       {errorMessage && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-center">
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded my-4 text-center">
           {errorMessage}
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
         {lists.map((list) => (
           <ListContainer
             key={list.id}
