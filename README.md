@@ -68,14 +68,14 @@ The application will fetch data from the only 1 API:
 
 ### ** Feature Checklist (For My Personal Testing) **
 
-- **Shift Data between Lists (1 to 3)**: Validate that I can shift data from old list to new.
-- **Shift Data between Lists (3 to 1)**: Validate that I can shift data from new list to old.
-- **Shift Data between Lists (3 to 2)**: Validate that I can shift data from 1 old list to another old list.
-- **Update Confirmation**: Verify that a new list is created when the update button is clicked.
-- **More Than 3 Lists**: Verify that the app handles scenarios where more than three lists are created or displayed.
-- **Cancel Feature**: Check that users can cancel an ongoing action, such as list creation.
-- **Responsiveness**: Test the app on various screen sizes to confirm it adapts properly (Medium, Large, Extra Large).
-- **Loading State**: Verify that a loading indicator is displayed while the API request is in progress.
-- **Error Handling**: Ensure that appropriate error messages are shown when the API request fails.
-- **Data Persistence**: Ensure that the app correctly uses localStorage to persist data across sessions.
-- **Reset Lists**: Test the reset functionality to clear localStorage and start with a fresh session.
+- **Shift Data between Lists (1 to 3)**: Validate that I can shift data from old list to new. ✅
+- **Shift Data between Lists (3 to 1)**: Validate that I can shift data from new list to old. ✅
+- **Shift Data between Lists (3 to 2)**: Validate that I can shift data from 1 old list to another old list. ✅
+- **Update Confirmation**: Verify that a new list is created when the update button is clicked. ✅
+- **More Than 3 Lists**: Verify that the app handles scenarios where more than three lists are created or displayed. ✅
+- **Cancel Feature**: Check that users can cancel an ongoing action, such as list creation. ✅
+- **Responsiveness**: Test the app on various screen sizes to confirm it adapts properly (Medium, Large, Extra Large). ✅
+- **Loading State**: Verify that a loading indicator is displayed while the API request is in progress. ✅
+- **Error Handling**: Ensure that appropriate error messages are shown when the API request fails. ✅
+- **Data Persistence**: Ensure that the app correctly uses localStorage to persist data across sessions. ✅
+- **Reset Lists**: Test the reset functionality to clear localStorage and start with a fresh session. ✅

@@ -56,7 +56,6 @@ const MainArea = () => {
       });
     } else {
       try {
-        // alert("Fetching fresh lists from the API");
         const res = (
           await axios.get("https://apis.ccbp.in/list-creation/lists")
         ).data;
@@ -78,7 +77,7 @@ const MainArea = () => {
 
   if (isLoading) {
     return (
-      <div className="text-center  h-screen w-screen bg-gray-100 text-4xl font-semibold flex flex-col justify-center items-center gap-12 text-blue-600">
+      <div className="text-center  h-[95vh] w-screen bg-gray-100 text-4xl font-semibold flex flex-col justify-center items-center gap-12 text-blue-600">
         <p>Loading...</p>
         <PropagateLoader color="#1749a8" size={20} speedMultiplier={1.25} />
       </div>
