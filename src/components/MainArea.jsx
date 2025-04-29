@@ -103,6 +103,13 @@ const MainArea = () => {
       (list) => list.list_number === nextListNumber - 1
     );
 
+    const handleCancelListCreation = () => {
+      setLists(initialLists);
+      setIsListCreationView(false);
+      setCheckedLists([]);
+      setNextListNumber((prev) => prev - 1);
+    };
+
     const handleUpdateLists = () => {
       setIsListCreationView(false);
       setCheckedLists([]);
@@ -141,6 +148,7 @@ const MainArea = () => {
         firstList={selectedLists[0]}
         newList={newList}
         secondList={selectedLists[1]}
+        onCancel={handleCancelListCreation}
         onUpdate={handleUpdateLists}
         onMoveItem={moveItemToList}
       />

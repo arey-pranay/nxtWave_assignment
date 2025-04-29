@@ -4,6 +4,7 @@ export default function ListCreationView({
   firstList,
   newList,
   secondList,
+  onCancel,
   onUpdate,
   onMoveItem,
 }) {
@@ -33,6 +34,12 @@ export default function ListCreationView({
       </div>
 
       <div className="flex justify-center space-x-4">
+        <button
+          onClick={onCancel}
+          className="border border-gray-300 text-gray-700 font-medium py-2 px-6 rounded-md hover:bg-gray-50 transition-colors"
+        >
+          Cancel
+        </button>
         <button
           onClick={onUpdate}
           className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-md transition-colors"
