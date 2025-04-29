@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import FailureView from "./FailureView";
 import ListContainer from "./ListContainer";
 import ListCreationView from "./ListCreationView";
+import { PropagateLoader } from "react-spinners";
+import { ToastContainer, toast } from "react-toastify";
 
 const MainArea = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +44,16 @@ const MainArea = () => {
       setLists(localLists);
       setNextListNumber(localLists.length + 1);
       setIsLoading(false);
-      alert("Restoring your last progress");
+      toast.info("Restored your progress", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "colored",
+      });
     } else {
       try {
         alert("Fetching fresh lists from the API");
@@ -66,7 +77,12 @@ const MainArea = () => {
   }, []);
 
   if (isLoading) {
-    return <div className="text-center">Loading...</div>;
+    return (
+      <div className="text-center grid place-items-center h-screen w-screen bg-gray-300 text-2xl text-blue-600">
+        <p>Loading...</p>
+        <PropagateLoader color="#1749a8" size={20} speedMultiplier={1.25} />
+      </div>
+    );
   }
 
   if (hasError) {
@@ -180,7 +196,7 @@ const MainArea = () => {
           Create a new list
         </button>
         <button
-          className="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded-md transition-colors"
+          className=" border border-blue-500 hover:bg-gray-100 text-blue-500 font-medium py-2 px-6 rounded-md transition-colors"
           onClick={() => {
             localStorage.removeItem("lists");
             setNextListNumber(3);
@@ -195,7 +211,6 @@ const MainArea = () => {
           {errorMessage}
         </div>
       )}
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
         {lists.map((list) => (
           <ListContainer
@@ -206,6 +221,18 @@ const MainArea = () => {
           />
         ))}
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover
+        theme="colored"
+      />{" "}
     </div>
   );
 };

@@ -68,3 +68,10 @@ The application will fetch data from the only 1 API:
    - I will also test error handling and the general flow of the app to ensure everything works smoothly.
 
 ---
+
+### **Extra Feature**
+
+**Caching and Data Persistence**:
+
+- I used localStorage to store the last updated lists of the user and check it every time before making a new API call.
+- If the user still wants a new session, there is a button to reset the localStorage and start from the new lists too.
