@@ -18,16 +18,6 @@ I'm making this file to tell my approach for the **NxtWave Technical Content Dev
 
 ---
 
-### **Project Plan**
-
-The project will involve creating an interactive, responsive application that allows users to interact with an external API for list creation. Below are the key aspects I plan to implement:
-
-- **Responsive Design**: I intend to ensure that the app is fully responsive and looks great on screens of different sizes, specifically targeting **Medium (>=768px)**, **Large (>=992px)**, and **Extra Large (>=1200px)** screens.
-- **API Integration**: I will integrate the **List Creation API** (`https://apis.ccbp.in/list-creation/lists`) to dynamically fetch and display lists.
-- **List Management**: Users will be able to create and manage lists.
-
----
-
 ### **Features to be Implemented**
 
 Here are the features I plan to implement:
@@ -75,3 +65,17 @@ The application will fetch data from the only 1 API:
 
 - I used localStorage to store the last updated lists of the user and check it every time before making a new API call.
 - If the user still wants a new session, there is a button to reset the localStorage and start from the new lists too.
+
+### ** Feature Checklist (For My Personal Testing) **
+
+- **Shift Data between Lists (1 to 3)**: Validate that I can shift data from old list to new.
+- **Shift Data between Lists (3 to 1)**: Validate that I can shift data from new list to old.
+- **Shift Data between Lists (3 to 2)**: Validate that I can shift data from 1 old list to another old list.
+- **Update Confirmation**: Verify that a new list is created when the update button is clicked.
+- **More Than 3 Lists**: Verify that the app handles scenarios where more than three lists are created or displayed.
+- **Cancel Feature**: Check that users can cancel an ongoing action, such as list creation.
+- **Responsiveness**: Test the app on various screen sizes to confirm it adapts properly (Medium, Large, Extra Large).
+- **Loading State**: Verify that a loading indicator is displayed while the API request is in progress.
+- **Error Handling**: Ensure that appropriate error messages are shown when the API request fails.
+- **Data Persistence**: Ensure that the app correctly uses localStorage to persist data across sessions.
+- **Reset Lists**: Test the reset functionality to clear localStorage and start with a fresh session.
